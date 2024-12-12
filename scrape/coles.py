@@ -159,8 +159,8 @@ def main():
 
         products = products + [p.model_dump_json() for p in search.results]
 
-        with open(f"/{os.getenv("WDIR")}/scrape/storage/coles_products.json", "w") as f:
-            json.dump(products, f, indent=4) 
+    with open(f"/{os.getenv("WDIR")}/scrape/storage/coles_products.json", "w") as f:
+        json.dump(products, f, indent=4) 
 
 if __name__ ==  "__main__":
     main()
