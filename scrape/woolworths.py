@@ -33,7 +33,7 @@ def get_categories():
         Category(**cat).model_dump_json() for cat in resp.json()["Categories"]
     ]
 
-    with open(f"/{os.getenv("WDIR")}/scrape/storage/coles_cats.json", "w") as f:
+    with open(f"/{os.getenv("WDIR")}/scrape/storage/woolworths_cats.json", "w") as f:
         json.dump(categories, f, indent=4)
 
 
@@ -126,7 +126,7 @@ def get_details(node, url):
 
 def main():
     products = []
-    with open(f"/{os.getenv("WDIR")}/scrape/storage/coles_cats.json") as f:
+    with open(f"/{os.getenv("WDIR")}/scrape/storage/woolworths_cats.json") as f:
         json_data = json.load(f)[1:21]
         categories = [
             get_details(json.loads(node), '/shop/browse') for node in json_data
@@ -150,7 +150,7 @@ def main():
 
             page_num += 1
 
-    with open(f"/{os.getenv("WDIR")}/scrape/storage/coles_products.json", "w") as f:
+    with open(f"/{os.getenv("WDIR")}/scrape/storage/woolworths_products.json", "w") as f:
         json.dump(products, f, indent=4)
 
 if __name__ ==  "__main__":
